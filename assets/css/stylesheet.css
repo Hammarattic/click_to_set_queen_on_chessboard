@@ -1,12 +1,22 @@
 .item{
 
+
+
+display: flex;
+    border: 1px solid orange;
+
+
+
+
+}
+
+.chess{
         display: flex;
         justify-content: center;
-        align-items: center;
 
-
-
-
-
-
+        border: 1px solid red;
+}
+.gocenter{
+        display: flex;
+        justify-content: center;
 }
