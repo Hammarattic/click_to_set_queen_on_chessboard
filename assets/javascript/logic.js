@@ -9,7 +9,8 @@ function generateChessboard() {
     let input = document.getElementById("numberValue").value;
 
     let number1 = parseInt(input);
-
+    let myheight=number1*25;
+    let mywidth=number1*25
     // console.log(number1);
 
     if (number1 > 100) {
@@ -28,17 +29,17 @@ function generateChessboard() {
 
     // Set grid style
     contentContainer.style.gridTemplateColumns = `repeat(${number1}, 1fr)`;
-    contentContainer.style.height = "200px";
-    contentContainer.style.width = "200px";
+    contentContainer.style.height = `${myheight}px`;
+    contentContainer.style.width  = `${mywidth}px`;
+    console.log(myheight);
+    console.log(mywidth);
 
     for (let y = 0; y < number1; y++) {
         for (let x = 0; x < number1; x++) {
 
 
 
-            // const img1 = document.createElement("img");
-            // img.src = "../img/queen.jpg";
-            // document.body.appendChild(img1);
+
 
 
 
@@ -48,7 +49,7 @@ function generateChessboard() {
             itemDiv.addEventListener('click',() =>{
                 let codinate={x,y}
 
-                console.log(codinate);
+                // console.log(codinate);
                 calculateAttack(codinate);
             });
 
@@ -58,11 +59,18 @@ function generateChessboard() {
 
             let isQueen = storeCordinates.some(cord => cord.x === x  && cord.y === y );
             let isUnsafe = dontPlaceQueen.some(cord => cord.x === x && cord.y === y );
-            console.log(storeCordinates,"testing what is in it");
+            // console.log(storeCordinates,"testing what is in it");
             // console.log(isUnsafe);
             if (isQueen) {
-                itemDiv.style.color = "LIME";
-                itemDiv.innerHTML = "Q";
+                // itemDiv.style.color = "LIME";
+                // itemDiv.innerHTML = "Q";
+                const img = document.createElement("img");
+                img.src = "../img/queen.jpg"
+                img.style.height = "40px"
+                img.style.width = "$40px";
+                img.style.justifyContent = "center";
+                itemDiv.appendChild(img);
+
             }  else if (isUnsafe) {
                 console.log(isUnsafe)
                 // console.log(isQueen)
@@ -198,4 +206,3 @@ function calculateAttack(codinate) {
     generateChessboard()
     }
 }
-CLEAR()
